@@ -16,9 +16,8 @@ import android.widget.Toast;
 
 import com.alcohol.finalalcohol.ATask.LoginInsert;
 import com.alcohol.finalalcohol.Dto.loginDTO;
-
+//testzzz
 import java.util.concurrent.ExecutionException;
-//zzgzzzgzg
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPw;
