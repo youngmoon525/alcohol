@@ -74,10 +74,22 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="70dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="150dp"
             android:background="@drawable/round"
             android:hint="이메일 입력"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:inputType="text"/>
+
+        <Button
+            android:id="@+id/emch"
+            android:layout_width="115dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="20dp"
+            android:text="중복검사"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvEmail"
@@ -100,10 +112,22 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="150dp"
             android:background="@drawable/round"
             android:hint="닉네임 입력"
+            android:inputType="text"
             android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/nickch"
+            android:layout_width="115dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/emch"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:text="중복검사"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvNickname"
@@ -129,8 +153,8 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/round"
             android:hint="비밀번호 입력"
-            android:textSize="24sp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/tvPass"
@@ -171,79 +195,77 @@
             android:layout_marginEnd="20dp"
             android:textColor="#FB2828" />
 
-
-
-
-
         <RadioGroup
-            android:id="@+id/genderGroup1"
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_below="@+id/etPassch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="100dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25sp">
+
+            <RadioButton
+                android:id="@+id/radio1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="남"
+                android:textSize="20sp"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radio2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="여"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvAddr"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/radioGroup"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="4"
-                android:gravity="center">
-
-        <RadioButton
-            android:id="@+id/btnMale"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:text="남"
-            android:textSize="24sp"
-            android:layout_weight="1"/>
-
-        <RadioButton
-            android:id="@+id/btnFemale"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:id="@+id/tvFemale"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:text="여"
-            android:textSize="24sp"
-            android:layout_weight="1"/>
-        </LinearLayout>
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/etAddr"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/genderGroup1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/round"
             android:hint="주소"
             android:textSize="24sp" />
 
+        <EditText
+            android:id="@+id/etAddr2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/tvAddr"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="160dp"
+            android:background="@drawable/round"
+            android:hint="나머지주소"
+            android:inputType="text"
+            android:textSize="24sp"
+            android:enabled="false"/>
+
         <Button
             android:id="@+id/btnJoin"
             android:layout_width="150dp"
             android:layout_height="50sp"
-            android:layout_below="@+id/etAddr"
+            android:layout_below="@+id/etAddr2"
             android:layout_alignParentStart="true"
             android:layout_marginStart="45dp"
             android:layout_marginTop="25dp"
+            android:background="@drawable/btn_main"
             android:text="다음"
             android:textSize="24sp" />
 
@@ -251,11 +273,24 @@
             android:id="@+id/btnExit"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/etAddr"
+            android:layout_below="@+id/etAddr2"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="45dp"
             android:text="취소"
+            android:textSize="24sp"
+            android:background="@drawable/btn_main"/>
+
+        <Button
+            android:id="@+id/btnAddr"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/tvAddr"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/btn_addr"
+            android:text="주소검색"
             android:textSize="24sp" />
 
 
