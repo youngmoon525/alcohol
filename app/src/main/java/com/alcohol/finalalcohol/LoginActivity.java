@@ -13,10 +13,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
+//gggfz
 import com.alcohol.finalalcohol.ATask.LoginInsert;
 import com.alcohol.finalalcohol.Dto.loginDTO;
-//testzzz
+
 import java.util.concurrent.ExecutionException;
 public class LoginActivity extends AppCompatActivity {
 
