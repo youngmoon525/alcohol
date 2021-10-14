@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:fillViewport="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/layout_first"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="#FFFFFF"
+            android:gravity="center_horizontal"
+            android:padding="11dp"
+            android:text="구독 신청"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:rotation="270"
+            android:src="@drawable/btn_arrow" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:background="#E2F3F2F2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="이름"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:inputType="textPersonName"
+                android:background="@drawable/radius_enabled"
+                android:hint="이름을 입력하세요" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="주소"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_setPost"
+                android:layout_width="220dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_addr"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/radius_disabled"
+                android:enabled="false"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btn_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_addr"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_toEndOf="@+id/et_setPost"
+                android:backgroundTint="#858585"
+                android:text="주소찾기" />
+
+            <EditText
+                android:id="@+id/et_setAddr"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/et_setPost"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/radius_disabled"
+                android:enabled="false"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/et_cstAddr"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/et_setAddr"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/radius_enabled"
+                android:hint="나머지 주소를 입력하세요" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_del"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="200dp"
+                android:layout_weight="1"
+                android:text="구독 개월"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spin_months"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_del"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/radius_enabled" />
+
+            <TextView
+                android:id="@+id/every"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_del"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="17dp"
+                android:layout_toEndOf="@+id/spin_months"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="개월 동안"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spin_delivery"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_del"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toEndOf="@+id/every"
+                android:background="@drawable/radius_enabled" />
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_del"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/spin_delivery"
+                android:gravity="left|center"
+                android:text="일 마다 배송"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_card"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="200dp"
+                android:layout_weight="1"
+                android:text="결제 카드 번호"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_cardNum"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/tv_card"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:maxLength="16"
+                android:layout_weight="1"
+                android:background="@drawable/radius_enabled"
+                android:hint="15~16자리 카드번호를 입력하세요" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#ffffff"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"
+                android:text="최종 결제 금액"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="120dp"
+                android:layout_toEndOf="@+id/tv_total"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:text="35,000"
+                android:textColor="#E47B7B"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="10dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
+                android:layout_toEndOf="@+id/tv_cost"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:text="원"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#858585"
+            android:text="구독 신청"
+            android:layout_margin="2dp"/>
+    </LinearLayout>
+</FrameLayout>
+</ScrollView>
