@@ -107,27 +107,6 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".TodaysAlcohol.todaysalcoholActivity"
-            android:exported="true" />
-        <activity
-            android:name=".JoinActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Subscribe.Subs_input"
-            android:exported="true" />
-        <activity
-            android:name=".MySubsDetail.mySubsDetail"
-            android:exported="true" />
-        <activity
-            android:name=".MySubsDetail.mySubsRefund"
-            android:exported="true" />
-        <activity
-            android:name=".MySubsDetail.mySubsResult"
-            android:exported="true" />
-        <activity
-            android:name=".WebViewActivity"
-            android:exported="true" />
-        <activity
             android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
@@ -141,20 +120,12 @@
                 <data android:scheme="@string/kakao_scheme"
                     android:host="@string/kakaolink_host"/>
             </intent-filter>
-        </activity> <!-- http 라이브러리 사용 -->
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" /> <!-- 카카오 앱키 -->
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="e476c7b648904485271c091836c099cb" /> <!-- API24 이상부터 Url 이 file:// 로 시작되면 안되서 content:// 으로 변환시키는 부분 -->
         </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
             android:grantUriPermissions="true"
             android:usesCleartextTraffic="true">
             <meta-data
