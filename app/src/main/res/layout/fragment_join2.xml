@@ -103,7 +103,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/round"
-            android:hint="생일 입력 (예시 : 19950101)"
+            android:hint="생일 입력"
             android:inputType="text"
             android:textSize="24sp" />
 
@@ -172,8 +172,7 @@
             android:layout_marginStart="45dp"
             android:layout_marginTop="25dp"
             android:text="다음"
-            android:textSize="24sp"
-            android:background="@drawable/btn_main"/>
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/btnExit"
@@ -184,8 +183,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="45dp"
             android:text="취소"
-            android:textSize="24sp"
-            android:background="@drawable/btn_main"/>
+            android:textSize="24sp" />
 
 
     </RelativeLayout>
