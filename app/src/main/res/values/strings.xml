@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">finalalcohol</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kakao_app_key">f172a490a62149fd61b48189584b22cb</string>
+    <string name="kakao_scheme">kakaof172a490a62149fd61b48189584b22cb</string>
+    <string name="kakaolink_host">kakaolink</string>
+</resources>

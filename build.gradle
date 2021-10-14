@@ -1,0 +1,28 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        //maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/'}
+        //maven { url "https://jitpack.io" }
+        //maven { url "https://chatsdk.jfrog.io/artifactory/release/chat-sdk-android" }
+        //maven { url "https://chatsdk.jfrog.io/artifactory/release/chatkit" }
+        //maven { url "https://chatsdk.jfrog.io/artifactory/release/matisse" }
+        /*카카오*/
+        maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' }
+
+    }
+    dependencies {
+        //classpath "com.android.tools.build:gradle:7.0.0"
+        classpath "com.android.tools.build:gradle:4.1.3"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20'// 코틀린혼용사용
+        classpath 'com.google.gms:google-services:4.3.10'
+
+    }
+
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
