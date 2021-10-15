@@ -18,11 +18,7 @@ import com.alcohol.finalalcohol.ATask.LoginInsert;
 import com.alcohol.finalalcohol.Dto.loginDTO;
 
 import java.util.concurrent.ExecutionException;
-<<<<<<< HEAD
 //aa
-=======
-
->>>>>>> d5f563238c9332ce4fa9f40bd049ad95dedc68a8
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPw;
