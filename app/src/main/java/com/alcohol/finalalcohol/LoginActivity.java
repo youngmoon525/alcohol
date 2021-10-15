@@ -24,11 +24,7 @@ import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.util.exception.KakaoException;
 
 import java.util.concurrent.ExecutionException;
-<<<<<<< HEAD
-//aa
-=======
 
->>>>>>> 14e6711581d0919df79a46fca27e7d0273dccb57
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPw;
