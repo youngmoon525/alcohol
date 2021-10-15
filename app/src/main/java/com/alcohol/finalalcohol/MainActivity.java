@@ -6,20 +6,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.animation.ObjectAnimator;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.alcohol.finalalcohol.Bottomnavi.FragmentSubs;
-import com.alcohol.finalalcohol.Bottomnavi.FragmentMy;
-import com.alcohol.finalalcohol.Bottomnavi.Todays_Alcohol_Fragment;
-import com.alcohol.finalalcohol.Bottomnavi.Todays_Control_Fragment;
-import com.alcohol.finalalcohol.Bottomnavi.Todays_Test_Fragment;
+import com.alcohol.finalalcohol.Chat.ChatActivity;
+import com.alcohol.finalalcohol.bottomnavi.FragmentSubs;
+import com.alcohol.finalalcohol.bottomnavi.FragmentMy;
+import com.alcohol.finalalcohol.bottomnavi.Todays_Alcohol_Fragment;
+import com.alcohol.finalalcohol.bottomnavi.Todays_Control_Fragment;
+import com.alcohol.finalalcohol.bottomnavi.Todays_Test_Fragment;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
+
+import java.security.MessageDigest;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "main:MainActivity :";
@@ -40,10 +50,25 @@ public class MainActivity extends AppCompatActivity {
     //selFragment에 fragment1, fragment2, fragment3 을 담아서 쓸 수 있다.
     AppBarLayout appbarlayout;
 
+    //메인플로팅버튼들
+    FloatingActionButton fabMain;
+    FloatingActionButton fabchat;
+    FloatingActionButton fabsupport;
+    // 플로팅버튼 상태
+    private boolean fabMain_status = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getAppKeyHash();
+
+
+        //메인플로팅버튼 찾아놓기
+        fabMain = findViewById(R.id.fabMain);
+        fabchat = findViewById(R.id.fabchat);
+        fabsupport = findViewById(R.id.fabsupport);
 
         //상단탭 프래그먼트들
         todays_alcohol_fragment = new Todays_Alcohol_Fragment();//프래그먼트객체생성
@@ -73,6 +98,44 @@ public class MainActivity extends AppCompatActivity {
         tabs.addTab(tabs.newTab().setText("오늘의 술 추천"));//인덱스 : 0
         tabs.addTab(tabs.newTab().setText("내 술 정보"));//인덱스 : 1
         tabs.addTab(tabs.newTab().setText("술장고컨트롤러"));//인덱스 : 2
+
+        //플로팅버튼클릭시
+        fabMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toggleFab();
+                //Toast.makeText(MainActivity.this, "버튼1클릭", Toast.LENGTH_SHORT).show();
+            }
+        });
+        fabchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(MainActivity.this, "버튼2클릭", Toast.LENGTH_SHORT).show();
+                //
+/*                Intent intent = new Intent(MainActivity.this, ChatActivity.class);//채팅액티비티로 전환
+                startActivity(intent);//채팅액티비티*/
+                //상담사으로서 채팅 입장
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                intent.putExtra("userName", "회원1");//데이터넘기기
+                intent.putExtra("chat_name", "상담사");//데이터넘기기
+                startActivity(intent);
+            }
+        });
+        fabsupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(MainActivity.this, "버튼3클릭", Toast.LENGTH_SHORT).show();
+                //
+                /*Intent intent = new Intent(MainActivity.this, ChatActivity.class);//챗봇액티비티로 전환
+                startActivity(intent);//채팅액티비티*/
+                //회원으로서 채팅 입장
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+                intent.putExtra("userName", "상담사");//데이터넘기기
+                intent.putExtra("chat_name", "회원1");//데이터넘기기
+                startActivity(intent);
+            }
+        });
+
 
 
         //탭 레이아웃에 선택리스너를 달아준다.
@@ -112,7 +175,9 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
+
         });
+
 
         bottomNavigationView = findViewById(R.id.bottom_navi);
         //.setOnItemSelectedListener은 내가 선택한 메뉴 아이템 리스너
@@ -147,5 +212,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //플로팅버튼 애니메이션
+    // 플로팅 액션 버튼 클릭시 애니메이션 효과
+    public void toggleFab() {
+        if(fabMain_status == true) {
+            // 플로팅 액션 버튼 닫기
+            // 애니메이션 추가
+            ObjectAnimator fe_animation = ObjectAnimator.ofFloat(fabchat, "translationY", 0f);
+            fe_animation.start();
+            ObjectAnimator fc_animation = ObjectAnimator.ofFloat(fabsupport, "translationY", 0f);
+            fc_animation.start();
+            // 메인 플로팅 이미지 변경
+            fabMain.setImageResource(R.drawable.inquiry);
 
+        }else if(fabMain_status == false) {
+            // 플로팅 액션 버튼 열기
+            ObjectAnimator fe_animation = ObjectAnimator.ofFloat(fabchat, "translationY", -200f);
+            fe_animation.start();
+            ObjectAnimator fc_animation = ObjectAnimator.ofFloat(fabsupport, "translationY", -400f);
+            fc_animation.start();
+            // 메인 플로팅 이미지 변경
+            fabMain.setImageResource(R.drawable.downarrow);
+        }
+        // 플로팅 버튼 상태 변경
+        fabMain_status = !fabMain_status;
+    }
+
+
+
+    private void getAppKeyHash(){
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures){
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(),0));
+                Log.e("Hash key", something);
+            }
+        }catch (Exception e){
+            e.getMessage();
+        }
+    }
 }
+
