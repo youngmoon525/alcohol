@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".Bottomnavi.Todays_Alcohol_Fragment">
+=======
+    tools:context=".bottomnavi.Todays_Alcohol_Fragment">
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 
     <Button
         android:id="@+id/btnal"

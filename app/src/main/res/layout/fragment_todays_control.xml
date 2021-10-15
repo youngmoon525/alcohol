@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="#FFFFFF"
     tools:context=".Bottomnavi.Todays_Control_Fragment">
 
@@ -350,4 +351,16 @@
         </RelativeLayout>
 
     </LinearLayout>
+=======
+    tools:context=".bottomnavi.Todays_Control_Fragment">
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="todays의 컨트롤러에요"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 </FrameLayout>

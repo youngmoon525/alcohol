@@ -1,22 +1,40 @@
 package com.alcohol.finalalcohol.Join;
 
+<<<<<<< HEAD
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+=======
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Patterns;
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+<<<<<<< HEAD
+=======
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+<<<<<<< HEAD
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -24,6 +42,20 @@ import com.alcohol.finalalcohol.LoginActivity;
 import com.alcohol.finalalcohol.R;
 
 import java.io.File;
+=======
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.alcohol.finalalcohol.ATask.JoinInsert;
+import com.alcohol.finalalcohol.MainActivity;
+import com.alcohol.finalalcohol.R;
+
+import java.io.File;
+import java.lang.reflect.Array;
+import java.util.concurrent.ExecutionException;
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 import java.util.regex.Pattern;
 
 public class JoinFragment2 extends Fragment {
@@ -48,6 +80,7 @@ public class JoinFragment2 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_join2, container, false);
 
+<<<<<<< HEAD
         String mem_email = getArguments().getString("mem_email"); // 프래그먼트1에서 받아온 값 넣기
         String mem_nickname = getArguments().getString("mem_nickname"); // 프래그먼트1에서 받아온 값 넣기
         String mem_pw = getArguments().getString("mem_pw"); // 프래그먼트1에서 받아온 값 넣기
@@ -140,6 +173,17 @@ public class JoinFragment2 extends Fragment {
 
             }
         });
+=======
+        etName = rootView.findViewById(R.id.etEmail);
+        tvName = rootView.findViewById(R.id.tvEmail);
+
+        etBirth = rootView.findViewById(R.id.etNickname);
+        tvBirth = rootView.findViewById(R.id.tvNickname);
+
+        etPhone = rootView.findViewById(R.id.etPass);
+        tvPhone = rootView.findViewById(R.id.tvPass);
+
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 
 
         //취소키
@@ -157,7 +201,11 @@ public class JoinFragment2 extends Fragment {
                 builder.setPositiveButton("회원가입취소", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+<<<<<<< HEAD
                         Intent intent = new Intent(getContext(), LoginActivity.class);
+=======
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
                         startActivity(intent);
                     }
                 });//회원가입취소
@@ -184,6 +232,7 @@ public class JoinFragment2 extends Fragment {
                 String mem_birth=etBirth.getText().toString();
                 String mem_phone =etPhone.getText().toString();
 
+<<<<<<< HEAD
                 JoinFragment3 fragment3 = new JoinFragment3();//프래그먼트2 선언
 
                 if( !Pattern.matches("^[가-힣]*$", mem_name) ){
@@ -222,6 +271,14 @@ public class JoinFragment2 extends Fragment {
                 transaction.replace(R.id.frame, fragment3);
                 transaction.commit();
 /*
+=======
+                String mem_email = getArguments().getString("mem_email"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_nickname = getArguments().getString("mem_nickname"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_pw = getArguments().getString("mem_pw"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_address = getArguments().getString("mem_address"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_gender = getArguments().getString("mem_gender"); // 프래그먼트1에서 받아온 값 넣기
+
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
                 // 1. builder 선언
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 // 2. 알림창 제목 설정
@@ -233,19 +290,49 @@ public class JoinFragment2 extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+<<<<<<< HEAD
+
+=======
+                        JoinFragment3 fragment3 = new JoinFragment3();//프래그먼트2 선언
+
+                        Bundle bundle = new Bundle(); // 번들을 통해 값 전달
+                        bundle.putString("mem_name",mem_name);//번들에 넘길 값 저장
+                        bundle.putString("mem_birth",mem_birth);//번들에 넘길 값 저장
+                        bundle.putString("mem_phone",mem_phone);//번들에 넘길 값 저장
+
+                        //앞 프래그먼트에서 값 가져온 것 넣기
+                        //name = getArguments().getString("name"); // 프래그먼트1에서 받아온 값 넣기
+                        bundle.putString("mem_email", getArguments().getString("mem_email"));//번들에 넘길 값 저장
+                        bundle.putString("mem_nickname", getArguments().getString("mem_nickname"));//번들에 넘길 값 저장
+                        bundle.putString("mem_pw", getArguments().getString("mem_pw"));//번들에 넘길 값 저장
+                        bundle.putString("mem_address", getArguments().getString("mem_address"));//번들에 넘길 값 저장
+                        bundle.putString("mem_gender", getArguments().getString("mem_gender"));//번들에 넘길 값 저장
+
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        fragment3.setArguments(bundle);//번들을 프래그먼트2로 보낼 준비
+                        transaction.replace(R.id.frame, fragment3);
+                        transaction.commit();
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 
 
 
 
-
+<<<<<<< HEAD
                         JoinInsert joinInsert = new JoinInsert(mem_name, mem_birth, mem_phone, mem_email, mem_nickname, mem_pw, mem_address, mem_gender);
+=======
+/*                        JoinInsert joinInsert = new JoinInsert(mem_name, mem_birth, mem_phone, mem_email, mem_nickname, mem_pw, mem_address, mem_gender);
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
                         try {
                             state = joinInsert.execute().get();
                         } catch (ExecutionException e){
                             e.printStackTrace();
                         } catch (InterruptedException e){
                             e.printStackTrace();
+<<<<<<< HEAD
                         }
+=======
+                        }*/
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
                     }
                 });//회원가입이어서 진행
 
@@ -258,7 +345,11 @@ public class JoinFragment2 extends Fragment {
                 });//돌아가기
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
+<<<<<<< HEAD
 */
+=======
+
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
                 //Log.d(String.valueOf(this),  email + "," + email2 + "," + nickname + "," + pass + "," + passch + "," + addr );
 /*                if(){
 
@@ -273,7 +364,11 @@ public class JoinFragment2 extends Fragment {
     }
 
 
+<<<<<<< HEAD
 /*
+=======
+
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
     //ACCESS_NETWORK_STATE와 ACCESS_WIFI_STATE은 꼭 넣어야 MAP API사용가능
     //CAMERA가 있어야 카메라 사용가능
     private void checkDangerousPermissions() {
@@ -320,6 +415,9 @@ public class JoinFragment2 extends Fragment {
             }
         }
     }
+<<<<<<< HEAD
 
  */
+=======
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 }

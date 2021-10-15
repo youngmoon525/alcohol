@@ -74,6 +74,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="70dp"
+<<<<<<< HEAD
             android:layout_marginEnd="150dp"
             android:background="@drawable/round"
             android:hint="이메일 입력"
@@ -90,6 +91,12 @@
             android:layout_marginEnd="20dp"
             android:text="중복검사"
             android:textSize="20sp" />
+=======
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/round"
+            android:hint="이메일 입력"
+            android:textSize="24sp" />
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 
         <TextView
             android:id="@+id/tvEmail"
@@ -112,6 +119,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+<<<<<<< HEAD
             android:layout_marginEnd="150dp"
             android:background="@drawable/round"
             android:hint="닉네임 입력"
@@ -129,6 +137,13 @@
             android:text="중복검사"
             android:textSize="20sp" />
 
+=======
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/round"
+            android:hint="닉네임 입력"
+            android:textSize="24sp" />
+
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
         <TextView
             android:id="@+id/tvNickname"
             android:layout_width="match_parent"
@@ -153,8 +168,13 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/round"
             android:hint="비밀번호 입력"
+<<<<<<< HEAD
             android:inputType="textPassword"
             android:textSize="24sp" />
+=======
+            android:textSize="24sp"
+            android:inputType="textPassword"/>
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 
         <TextView
             android:id="@+id/tvPass"
@@ -195,6 +215,7 @@
             android:layout_marginEnd="20dp"
             android:textColor="#FB2828" />
 
+<<<<<<< HEAD
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
@@ -236,11 +257,74 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+=======
+
+
+
+
+        <RadioGroup
+            android:id="@+id/genderGroup1"
+            android:layout_below="@+id/etPassch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/btnMale"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="남"
+            android:textSize="24sp"
+            android:layout_weight="1"/>
+
+        <RadioButton
+            android:id="@+id/btnFemale"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tvFemale"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="여"
+            android:textSize="24sp"
+            android:layout_weight="1"/>
+        </LinearLayout>
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/etAddr"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/genderGroup1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
             android:layout_marginEnd="20dp"
             android:background="@drawable/round"
             android:hint="주소"
             android:textSize="24sp" />
 
+<<<<<<< HEAD
         <EditText
             android:id="@+id/etAddr2"
             android:layout_width="match_parent"
@@ -257,15 +341,24 @@
             android:textSize="24sp"
             android:enabled="false"/>
 
+=======
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
         <Button
             android:id="@+id/btnJoin"
             android:layout_width="150dp"
             android:layout_height="50sp"
+<<<<<<< HEAD
             android:layout_below="@+id/etAddr2"
             android:layout_alignParentStart="true"
             android:layout_marginStart="45dp"
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_main"
+=======
+            android:layout_below="@+id/etAddr"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="25dp"
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
             android:text="다음"
             android:textSize="24sp" />
 
@@ -273,11 +366,16 @@
             android:id="@+id/btnExit"
             android:layout_width="150dp"
             android:layout_height="50dp"
+<<<<<<< HEAD
             android:layout_below="@+id/etAddr2"
+=======
+            android:layout_below="@+id/etAddr"
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
             android:layout_alignParentEnd="true"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="45dp"
             android:text="취소"
+<<<<<<< HEAD
             android:textSize="24sp"
             android:background="@drawable/btn_main"/>
 
@@ -291,6 +389,8 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/btn_addr"
             android:text="주소검색"
+=======
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
             android:textSize="24sp" />
 
 

@@ -4,8 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".TodaysAlcohol.todaysalcoholActivity"
     android:background="@drawable/gradient">
+=======
+    tools:context=".bottomnavi.Todays_Alcohol_Fragment"
+    android:background="@color/white">
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -13,7 +18,11 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+<<<<<<< HEAD
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"/>
+=======
+        android:layout_marginTop="10dp"/>
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
 
 </RelativeLayout>

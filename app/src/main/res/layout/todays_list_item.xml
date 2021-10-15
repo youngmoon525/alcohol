@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     android:layout_width="wrap_content"
+=======
+    android:layout_width="match_parent"
+>>>>>>> 6baa67f0e48b2e13dea4961ee838a544bc11fcb0
     android:layout_height="wrap_content"
     android:layout_margin="4dp">
 
