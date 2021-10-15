@@ -1,13 +1,13 @@
-package com.alcohol.finalalcohol.DTO;
+package com.alcohol.finalalcohol.Dto;
 
 import java.io.Serializable;
 
-public class LoginDTO implements Serializable {
+public class loginDTO implements Serializable {
 
     String mem_email            ;
     String mem_pw               ;
 
-    public LoginDTO(String mem_email, String mem_pw) {
+    public loginDTO(String mem_email, String mem_pw) {
         this.mem_email = mem_email;
         this.mem_pw = mem_pw;
     }

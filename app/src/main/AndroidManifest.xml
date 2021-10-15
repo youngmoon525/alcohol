@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alcohol.finalalcohol">
-    <!-- 권한설정 -->
+    <!-- 인터넷권한 / 카메라권한 / 네트워크권한 / 와이파이권한 / 쓰기읽기권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature
         android:name="camera2"
@@ -21,21 +23,26 @@
 
             <category android:name="android.intent.category.BROWSABLE" />
 
+            <!--<data
+                android:host="com.android.contacts"
+                android:mimeType="vnd.android.cursor.item/*"
+                android:scheme="http" />-->
             <data android:scheme="http" />
         </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
 
-            <category android:name="android.intent.category.BROWSABLE" />
-
+<!--            <data
+                android:mimeType="application/pdf"
+                android:scheme="https" />-->
             <data android:scheme="https" />
-        </intent>
 
+            <category android:name="android.intent.category.BROWSABLE" />
+        </intent>
         <!-- Camera -->
         <intent>
             <action android:name="android.media.action.IMAGE_CAPTURE" />
         </intent>
-
         <!-- Gallery -->
         <intent>
             <action android:name="android.intent.action.GET_CONTENT" />
@@ -43,25 +50,55 @@
         <intent>
             <action android:name="android.media.browse.MediaBrowserService" />
         </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <!-- Replace with the MIME type that your app works with, if needed. -->
+            <data android:mimeType="image/jpeg" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+
+            <data android:mimeType="text/plain" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        <intent>
+            <action android:name="android.accounts.AccountAuthenticator" />
+        </intent>
+        <package android:name="com.kakao.talk" />
     </queries>
 
     <application
-        android:name=".Join.CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="술장고"
+        android:preserveLegacyExternalStorage="true"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Finalalcohol"
         android:usesCleartextTraffic="true">
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" /> <!-- http 라이브러리 사용 -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="f172a490a62149fd61b48189584b22cb" />
         <activity
-            android:name=".MyMemInfo.InquireActivity"
+            android:name=".Chat.ChatActivity"
             android:exported="true" />
         <activity
-            android:name=".MyMemInfo.UpdateActivity"
+            android:name=".Chat.ChatListActivity"
             android:exported="true" />
         <activity
-            android:name=".Subscribe.SubsActivity"
+            android:name=".JoinActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -70,50 +107,32 @@
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".TodaysAlcohol.todaysalcoholActivity"
-            android:exported="true" />
-        <activity
-            android:name=".JoinActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Subscribe.Subs_input"
-            android:exported="true" />
-        <activity
-            android:name=".MySubsDetail.mySubsDetail"
-            android:exported="true" />
-        <activity
-            android:name=".MySubsDetail.mySubsRefund"
-            android:exported="true" />
-        <activity
-            android:name=".MySubsDetail.mySubsResult"
-            android:exported="true" />
-        <activity
-            android:name=".WebViewActivity"
-            android:exported="true" />
-        <activity
             android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/kakao_scheme"
+                    android:host="@string/kakaolink_host"/>
             </intent-filter>
-        </activity> <!-- http 라이브러리 사용 -->
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" /> <!-- 카카오 앱키 -->
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="e476c7b648904485271c091836c099cb" /> <!-- API24 이상부터 Url 이 file:// 로 시작되면 안되서 content:// 으로 변환시키는 부분 -->
+        </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true"
+            android:usesCleartextTraffic="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepath" />
         </provider>
+
     </application>
 
 </manifest>
