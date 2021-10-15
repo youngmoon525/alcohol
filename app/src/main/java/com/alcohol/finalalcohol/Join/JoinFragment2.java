@@ -1,29 +1,39 @@
 package com.alcohol.finalalcohol.Join;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.alcohol.finalalcohol.LoginActivity;
+import com.alcohol.finalalcohol.ATask.JoinInsert;
+import com.alcohol.finalalcohol.MainActivity;
 import com.alcohol.finalalcohol.R;
 
 import java.io.File;
+import java.lang.reflect.Array;
+import java.util.concurrent.ExecutionException;
 import java.util.regex.Pattern;
 
 public class JoinFragment2 extends Fragment {
@@ -48,98 +58,15 @@ public class JoinFragment2 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_join2, container, false);
 
-        String mem_email = getArguments().getString("mem_email"); // 프래그먼트1에서 받아온 값 넣기
-        String mem_nickname = getArguments().getString("mem_nickname"); // 프래그먼트1에서 받아온 값 넣기
-        String mem_pw = getArguments().getString("mem_pw"); // 프래그먼트1에서 받아온 값 넣기
-        String mem_address = getArguments().getString("mem_address"); // 프래그먼트1에서 받아온 값 넣기
-        String mem_gender = getArguments().getString("mem_gender"); // 프래그먼트1에서 받아온 값 넣기
-        Log.d(TAG, ""+ mem_email + ", " + mem_nickname + ", " + mem_pw + ", " + mem_gender + ", " + mem_address);
+        etName = rootView.findViewById(R.id.etEmail);
+        tvName = rootView.findViewById(R.id.tvEmail);
 
-        etName = rootView.findViewById(R.id.etName);
-        tvName = rootView.findViewById(R.id.tvName);
+        etBirth = rootView.findViewById(R.id.etNickname);
+        tvBirth = rootView.findViewById(R.id.tvNickname);
 
-        etBirth = rootView.findViewById(R.id.etBirth);
-        tvBirth = rootView.findViewById(R.id.tvBirth);
+        etPhone = rootView.findViewById(R.id.etPass);
+        tvPhone = rootView.findViewById(R.id.tvPass);
 
-        etPhone = rootView.findViewById(R.id.etPhone);
-        tvPhone = rootView.findViewById(R.id.tvPhone);
-
-
-        //이름 포커스
-        etName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(!Pattern.matches("^[가-힣]*$", etName.getText().toString())){
-                    tvName.setText("이름을 확인해주세요.");
-                    etName.setBackgroundResource(R.drawable.focusround);
-                    return;
-                }else {
-                    tvName.setText("");
-                    etName.setBackgroundResource(R.drawable.focusgreenround);
-                }
-            }
-        });
-
-        //생일 포커스
-        etBirth.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(!Pattern.matches("^[0-9]{8}$", etBirth.getText().toString())){
-                    tvBirth.setText("생년월일을 확인해주세요.");
-                    etBirth.setBackgroundResource(R.drawable.focusround);
-                    return;
-                }else {
-                    tvBirth.setText("");
-                    etBirth.setBackgroundResource(R.drawable.focusgreenround);
-                }
-            }
-        });
-
-        //폰번호 포커스
-        etPhone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if(!Pattern.matches("^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$", etPhone.getText().toString())){
-                    tvPhone.setText("핸드폰 번호을 확인해주세요.");
-                    etPhone.setBackgroundResource(R.drawable.focusround);
-                    return;
-                }else {
-                    tvPhone.setText("");
-                    etPhone.setBackgroundResource(R.drawable.focusgreenround);
-                }
-
-            }
-        });
 
 
         //취소키
@@ -157,7 +84,7 @@ public class JoinFragment2 extends Fragment {
                 builder.setPositiveButton("회원가입취소", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(getContext(), LoginActivity.class);
+                        Intent intent = new Intent(getContext(), MainActivity.class);
                         startActivity(intent);
                     }
                 });//회원가입취소
@@ -184,44 +111,12 @@ public class JoinFragment2 extends Fragment {
                 String mem_birth=etBirth.getText().toString();
                 String mem_phone =etPhone.getText().toString();
 
-                JoinFragment3 fragment3 = new JoinFragment3();//프래그먼트2 선언
+                String mem_email = getArguments().getString("mem_email"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_nickname = getArguments().getString("mem_nickname"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_pw = getArguments().getString("mem_pw"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_address = getArguments().getString("mem_address"); // 프래그먼트1에서 받아온 값 넣기
+                String mem_gender = getArguments().getString("mem_gender"); // 프래그먼트1에서 받아온 값 넣기
 
-                if( !Pattern.matches("^[가-힣]*$", mem_name) ){
-                    Toast.makeText(getContext(), "이름을 확인해주세요.", Toast.LENGTH_SHORT).show();
-                    etName.requestFocus();
-                    return;
-                }
-
-                if( !Pattern.matches("^[0-9]{8}$", mem_birth) ){
-                    Toast.makeText(getContext(), "생년월일을 확인해주세요.", Toast.LENGTH_SHORT).show();
-                    etBirth.requestFocus();
-                    return;
-                }
-
-                if( !Pattern.matches("^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$", mem_phone) ){
-                    Toast.makeText(getContext(), "핸드폰번호를 확인해주세요.", Toast.LENGTH_SHORT).show();
-                    etPhone.requestFocus();
-                    return;
-                }
-
-                Bundle bundle = new Bundle(); // 번들을 통해 값 전달
-                bundle.putString("mem_name",mem_name);//번들에 넘길 값 저장
-                bundle.putString("mem_birth",mem_birth);//번들에 넘길 값 저장
-                bundle.putString("mem_phone",mem_phone);//번들에 넘길 값 저장
-
-                //앞 프래그먼트에서 값 가져온 것 넣기
-                //name = getArguments().getString("name"); // 프래그먼트1에서 받아온 값 넣기
-                bundle.putString("mem_email", mem_email);//번들에 넘길 값 저장
-                bundle.putString("mem_nickname", mem_nickname);//번들에 넘길 값 저장
-                bundle.putString("mem_pw", mem_pw);//번들에 넘길 값 저장
-                bundle.putString("mem_address", mem_address);//번들에 넘길 값 저장
-                bundle.putString("mem_gender", mem_gender);//번들에 넘길 값 저장
-
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                fragment3.setArguments(bundle);//번들을 프래그먼트2로 보낼 준비
-                transaction.replace(R.id.frame, fragment3);
-                transaction.commit();
-/*
                 // 1. builder 선언
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 // 2. 알림창 제목 설정
@@ -233,19 +128,37 @@ public class JoinFragment2 extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        JoinFragment3 fragment3 = new JoinFragment3();//프래그먼트2 선언
+
+                        Bundle bundle = new Bundle(); // 번들을 통해 값 전달
+                        bundle.putString("mem_name",mem_name);//번들에 넘길 값 저장
+                        bundle.putString("mem_birth",mem_birth);//번들에 넘길 값 저장
+                        bundle.putString("mem_phone",mem_phone);//번들에 넘길 값 저장
+
+                        //앞 프래그먼트에서 값 가져온 것 넣기
+                        //name = getArguments().getString("name"); // 프래그먼트1에서 받아온 값 넣기
+                        bundle.putString("mem_email", getArguments().getString("mem_email"));//번들에 넘길 값 저장
+                        bundle.putString("mem_nickname", getArguments().getString("mem_nickname"));//번들에 넘길 값 저장
+                        bundle.putString("mem_pw", getArguments().getString("mem_pw"));//번들에 넘길 값 저장
+                        bundle.putString("mem_address", getArguments().getString("mem_address"));//번들에 넘길 값 저장
+                        bundle.putString("mem_gender", getArguments().getString("mem_gender"));//번들에 넘길 값 저장
+
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        fragment3.setArguments(bundle);//번들을 프래그먼트2로 보낼 준비
+                        transaction.replace(R.id.frame, fragment3);
+                        transaction.commit();
 
 
 
 
-
-                        JoinInsert joinInsert = new JoinInsert(mem_name, mem_birth, mem_phone, mem_email, mem_nickname, mem_pw, mem_address, mem_gender);
+/*                        JoinInsert joinInsert = new JoinInsert(mem_name, mem_birth, mem_phone, mem_email, mem_nickname, mem_pw, mem_address, mem_gender);
                         try {
                             state = joinInsert.execute().get();
                         } catch (ExecutionException e){
                             e.printStackTrace();
                         } catch (InterruptedException e){
                             e.printStackTrace();
-                        }
+                        }*/
                     }
                 });//회원가입이어서 진행
 
@@ -258,7 +171,7 @@ public class JoinFragment2 extends Fragment {
                 });//돌아가기
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-*/
+
                 //Log.d(String.valueOf(this),  email + "," + email2 + "," + nickname + "," + pass + "," + passch + "," + addr );
 /*                if(){
 
@@ -273,7 +186,7 @@ public class JoinFragment2 extends Fragment {
     }
 
 
-/*
+
     //ACCESS_NETWORK_STATE와 ACCESS_WIFI_STATE은 꼭 넣어야 MAP API사용가능
     //CAMERA가 있어야 카메라 사용가능
     private void checkDangerousPermissions() {
@@ -320,6 +233,4 @@ public class JoinFragment2 extends Fragment {
             }
         }
     }
-
- */
 }
