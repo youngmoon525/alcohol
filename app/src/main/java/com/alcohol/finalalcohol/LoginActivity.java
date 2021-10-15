@@ -28,7 +28,7 @@ import java.util.concurrent.ExecutionException;
 public class LoginActivity extends AppCompatActivity {
 
     EditText etEmail, etPw;
-    //
+    //bb
     private ISessionCallback mSessionCallback;
     String state;
     int state2;
