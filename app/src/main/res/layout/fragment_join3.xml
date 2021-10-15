@@ -1,0 +1,419 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".MainActivity">
+
+    <!-- 위 -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_launcher"></ImageView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:text="회원가입"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!-- 줄 -->
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1.2dp"
+        android:background="#C6C4C4"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp">
+
+        <!-- mem_flavor    맛 -->
+        <TextView
+            android:id="@+id/tvFlavor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="주로 좋아하시는 맛은 어떤 맛인가요?"
+            android:textSize="16sp" />
+        <!-- mem_flavor    -->
+        <RadioGroup
+            android:id="@+id/Group_flavor"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tvFlavor"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="5sp">
+
+            <RadioButton
+                android:id="@+id/flavor1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="sweet"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/flavor2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="acidity"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/flavor3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="bitter"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/flavor4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="salty"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/flavor5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="spicy"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+        <!-- alcohol_bv 도수 -->
+        <TextView
+            android:id="@+id/tvAlcohol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="30dp"
+            android:text="당신의 도수는 어느정도인가요?"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_below="@+id/Group_flavor"/>
+        <!-- alcohol    -->
+        <RadioGroup
+            android:id="@+id/Group_alcohol_bv"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tvAlcohol"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25sp">
+
+            <RadioButton
+                android:id="@+id/alcohol1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="1~10"
+                android:textSize="20sp"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/alcohol2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="11~20"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/alcohol3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="21~30"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/alcohol4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="31~40"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+        <!-- smell 향 -->
+        <TextView
+            android:id="@+id/tvSmell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Group_alcohol_bv"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="center"
+            android:text="주로 좋아하는 술의 향은 어떤 것인가요?"
+            android:textSize="16sp" />
+        <!-- smell    -->
+        <RadioGroup
+            android:id="@+id/Group_smell"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tvSmell"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25sp">
+
+            <RadioButton
+                android:id="@+id/smell1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="fruit"
+                android:textSize="20sp"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/smell2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="root"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/smell3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="grain"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/smell4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="plant"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+        <!-- alcohol_type 주종 -->
+        <TextView
+            android:id="@+id/tvType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="30dp"
+            android:text="주로 드시는 술의 주종은 어떤것인가요?"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_below="@+id/Group_smell"/>
+
+        <!-- type    -->
+        <RadioGroup
+            android:id="@+id/Group_alcohol_type"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tvType"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/type1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1.2"
+                android:checked="true"
+                android:text="takju"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/type2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1.5"
+                android:text="lijueur"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/type3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="yakju"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/type4"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="soju"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/type5"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="2"
+                android:text="fruitwine"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+        <!-- 바디감 -->
+        <TextView
+            android:id="@+id/tvBody"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="30dp"
+            android:text="술의 바디감은 어느정도가 좋나요?"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_below="@+id/Group_alcohol_type"/>
+
+        <RadioGroup
+            android:id="@+id/Group_body"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tvBody"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25sp">
+
+            <RadioButton
+                android:id="@+id/body1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="LightBody"
+                android:textSize="20sp"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/body2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="MidiumBody"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/body3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="0.5"
+                android:text="FullBody"
+                android:textSize="20sp" />
+
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/btnJoin"
+            android:layout_width="150dp"
+            android:layout_height="50sp"
+            android:layout_below="@+id/Group_body"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="25dp"
+            android:text="회원가입"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnExit"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/Group_body"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="45dp"
+            android:text="취소"
+            android:textSize="24sp" />
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
