@@ -1,26 +1,44 @@
-package com.alcohol.finalalcohol.TodaysAlcohol;
+package com.alcohol.finalalcohol.todaysAlcohol;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alcohol.finalalcohol.Common.CommonMethod;
+import com.alcohol.finalalcohol.Dto.al_info_tbVO;
 import com.alcohol.finalalcohol.R;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class todaysalcoholAdapter extends RecyclerView.Adapter<todaysalcoholAdapter.ViewHolder> {
-        ArrayList images;
-        Context context;
+        private static final String TAG = "todaysalcoholAdapter : ";
 
-public todaysalcoholAdapter(Context context, ArrayList images) {
+        //ArrayList images;
+        Context context;
+        List<al_info_tbVO> allist;
+
+ public todaysalcoholAdapter(){}
+
+public todaysalcoholAdapter(Context context, List<al_info_tbVO> allist) {
         this.context = context;
-        this.images = images;
+        //this.images = images;
+        this.allist = allist;
+    Log.d(TAG, "todaysalcoholAdapter: "+allist.get(0).getAl_id());
         }
+
+
 
 @NonNull
 @Override

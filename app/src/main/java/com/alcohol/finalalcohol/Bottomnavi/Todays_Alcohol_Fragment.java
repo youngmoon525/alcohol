@@ -1,6 +1,5 @@
-package com.alcohol.finalalcohol.Bottomnavi;
+package com.alcohol.finalalcohol.bottomnavi;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
