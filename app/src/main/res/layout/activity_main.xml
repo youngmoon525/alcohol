@@ -25,7 +25,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="#F4F4F4"
                 android:elevation="1dp"
                 android:gravity="center"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -44,9 +44,9 @@
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabs"
+                    android:background="#F4F4F4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardview_light_background"
                     android:pointerIcon="arrow"
                     app:tabGravity="center"
                     app:tabIndicatorColor="#3A3A3A"
@@ -85,11 +85,46 @@
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
             <!--com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior
             안보이는 부분 스크롤해서 내려서 볼 수 있게 하는 부분-->
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabsupport"
+                android:backgroundTint="#F4F4F4"
+                app:borderWidth="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:src="@drawable/support"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_gravity="right|bottom"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabchat"
+                android:backgroundTint="#F4F4F4"
+                app:borderWidth="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:src="@drawable/chat"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_gravity="right|bottom"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabMain"
+                android:backgroundTint="#F4F4F4"
+                app:borderWidth="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:src="@drawable/inquiry"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_gravity="right|bottom"/>
+
         </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
 
     <!--하단탭이 들어올 자리-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -97,6 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
+        android:background="#F4F4F4"
         app:itemIconTint="@drawable/item_color"
         app:itemTextColor="@drawable/item_color"
         app:labelVisibilityMode="unlabeled"
